@@ -1,20 +1,113 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxicevkxaqyt1"]
+[gd_scene load_steps=21 format=3 uid="uid://cxicevkxaqyt1"]
+
+[ext_resource type="Script" path="res://character/player/player.gd" id="1_2bhy7"]
+[ext_resource type="Texture2D" uid="uid://b5wrsvnk51xn5" path="res://art/adventurer-crouch-00.png" id="1_6q54v"]
+[ext_resource type="Texture2D" uid="uid://d06jrc61t2gar" path="res://art/adventurer-idle-00.png" id="1_d5c44"]
+[ext_resource type="Texture2D" uid="uid://dl2go7mk5hajg" path="res://art/adventurer-idle-01.png" id="2_0te13"]
+[ext_resource type="Texture2D" uid="uid://cx27ja4c37d5o" path="res://art/adventurer-crouch-01.png" id="2_1ygix"]
+[ext_resource type="Texture2D" uid="uid://ciflyuy016gmj" path="res://art/adventurer-crouch-02.png" id="3_0rxek"]
+[ext_resource type="Texture2D" uid="uid://dfllyrab5021f" path="res://art/adventurer-idle-02.png" id="3_htavr"]
+[ext_resource type="Texture2D" uid="uid://7y0ib1x1sgoe" path="res://art/adventurer-idle-03.png" id="4_htfmf"]
+[ext_resource type="Texture2D" uid="uid://bhem852obrwkb" path="res://art/adventurer-crouch-03.png" id="4_w6r4k"]
+[ext_resource type="Texture2D" uid="uid://dmlmq74tvfs5l" path="res://art/adventurer-idle-2-00.png" id="5_aksd0"]
+[ext_resource type="Texture2D" uid="uid://b16tm0bc5iw6g" path="res://art/adventurer-idle-2-01.png" id="6_yew44"]
+[ext_resource type="Texture2D" uid="uid://uq58vu3vix0j" path="res://art/adventurer-idle-2-02.png" id="7_q37x8"]
+[ext_resource type="Texture2D" uid="uid://byrve3o4say8a" path="res://art/adventurer-idle-2-03.png" id="8_n434s"]
+[ext_resource type="Texture2D" uid="uid://3t8xumyn7paq" path="res://art/adventurer-run-01.png" id="10_12ula"]
+[ext_resource type="Texture2D" uid="uid://dm5ic423vul7r" path="res://art/adventurer-run-02.png" id="11_ofnna"]
+[ext_resource type="Texture2D" uid="uid://b5l14e1sgwp7h" path="res://art/adventurer-run-03.png" id="12_0cbns"]
+[ext_resource type="Texture2D" uid="uid://buu6jyo6qwdtx" path="res://art/adventurer-run-04.png" id="13_q2byv"]
+[ext_resource type="Texture2D" uid="uid://c27d1y8mfaunc" path="res://art/adventurer-run-05.png" id="14_qx16q"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_jny6o"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6q54v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1ygix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0rxek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_w6r4k")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_d5c44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0te13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_htavr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_htfmf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_aksd0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_yew44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q37x8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_n434s")
+}],
+"loop": true,
+"name": &"idle_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_12ula")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ofnna")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0cbns")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_q2byv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qx16q")
+}],
 "loop": true,
 "name": &"run",
 "speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"walk",
-"speed": 5.0
 }]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgldq"]
+size = Vector2(20, 26.6667)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_2bhy7")
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_jny6o")
-animation = &"walk"
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3.33333)
+shape = SubResource("RectangleShape2D_fgldq")
